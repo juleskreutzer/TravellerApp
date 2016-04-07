@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
+import java.net.ProtocolException;
 import java.net.URL;
 import java.util.Scanner;
 
@@ -66,5 +67,31 @@ public class HttpRequest {
 
         return true;
 
+    }
+
+    public static boolean Register(final String username, final String email, final String password) throws IllegalArgumentException {
+        Thread t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    String endpoint = String.format("/user/register/%s/%s/%s", email, password, username);
+                    URL url = new URL(SERVER_ADDRESS + endpoint);
+                    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                    connection.setRequestMethod("POST");
+
+                    InputStream in = new BufferedInputStream(connection.getInputStream());
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                    throw new IllegalArgumentException("Something went wrong, the URL was probably incorrect. This is our problem.");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    throw new IllegalArgumentException("At this time, we can't reach the server. Please try again later.");
+                }
+            }
+        });
+
+        t.start();
+
+        return true;
     }
 }

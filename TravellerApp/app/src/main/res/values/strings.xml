@@ -10,4 +10,10 @@
     <string name="LoginViewInfo">Do you want to share something with the world?</string>
     <string name="PasswordString">Password</string>
     <string name="EmailString">Email address</string>
+
+    <!-- Text View hints -->
+    <string name="txtUsernameHint">Username</string>
+    <string name="txtPasswordHint">Password</string>
+    <string name="txtPasswordComfirmHint">Confirm password</string>
+    <string name="txtEmailHint">Email</string>
 </resources>
