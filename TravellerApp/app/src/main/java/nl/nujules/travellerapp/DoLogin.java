@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
+import nl.nujules.travellerapp.util.Encrypt;
 
 public class DoLogin extends AppCompatActivity {
 
@@ -27,9 +28,11 @@ public class DoLogin extends AppCompatActivity {
                 final String email = tempEmail.getText().toString();
                 final String password = tempPassword.getText().toString();
 
+                final String encryptedPassword = Encrypt.encryptString(password);
+
                 boolean loginDidSucceed = false;
                 try{
-                    loginDidSucceed = HttpRequest.Login(email, password);
+                    loginDidSucceed = HttpRequest.Login(email, encryptedPassword);
                 } catch(IllegalArgumentException e) {
                     showError(e.getMessage());
                 }
