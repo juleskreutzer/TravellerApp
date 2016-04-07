@@ -6,10 +6,45 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:background">@drawable/background</item>
     </style>
 
     <style name="Background">
         <item name="android:background">@drawable/background</item>
     </style>
 
+    <style name="trasparentBackground">
+        <item name="android:background">@color/colorWhiteTrasparent</item>
+    </style>
+
+    <style name="Button">
+        <item name="android:layout_width">320dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:radius">10dp</item>
+        <item name="android:textColor">@color/colorWhite</item>
+    </style>
+
+    <style name="Button.Red" parent="Button">
+        <item name="android:background">@color/colorButtonRed</item>
+    </style>
+
+    <style name="Button.Logout" parent="Button.Red">
+        <item name="android:text">@string/btnLogout</item>
+    </style>
+
+    <style name="Button.Orange" parent="Button">
+        <item name="android:background">@color/colorButtonOrange</item>
+    </style>
+
+    <style name="Button.Register" parent="Button.Orange">
+        <item name="android:text">@string/btnRegister</item>
+    </style>
+
+    <style name="Button.Green" parent="Button">
+        <item name="android:background">@color/colorButtonGreen</item>
+    </style>
+
+    <style name="Button.Login" parent="Button.Green">
+        <item name="android:text">@string/btnLogin</item>
+    </style>
 </resources>

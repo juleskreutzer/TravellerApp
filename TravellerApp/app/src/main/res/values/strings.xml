@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">TravellerApp</string>
+
+    <!-- button strings -->
+    <string name="btnRegister">Register</string>
+    <string name="btnLogin">Login</string>
+    <string name="btnLogout">Logout</string>
+
+    <!-- View Strings -->
+    <string name="LoginViewInfo">Do you want to share something with the world?</string>
+    <string name="PasswordString">Password</string>
+    <string name="EmailString">Email address</string>
 </resources>

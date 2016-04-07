@@ -3,4 +3,13 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="colorWhite">#FFFFFF</color>
+
+    <!-- Transparent white window color on view -->
+    <color name="colorWhiteTrasparent">#20FFFFFF</color>
+
+    <!-- Button colors -->
+    <color name="colorButtonGreen">#80CF6B</color>
+    <color name="colorButtonOrange">#FF6600</color>
+    <color name="colorButtonRed">#C90002</color>
 </resources>
