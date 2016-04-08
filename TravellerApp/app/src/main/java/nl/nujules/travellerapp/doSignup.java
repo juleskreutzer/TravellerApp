@@ -32,27 +32,54 @@ public class DoSignup extends AppCompatActivity {
                 final String password = tempPassword.getText().toString();
                 final String passwordConfirm = tempPasswordConfirm.getText().toString();
 
-                if(username.equals("") || username == null) { showError("Username is required."); return; }
-                if(email.equals("") || email == null) { showError("Email is required"); return; }
-                if(password.equals("") || password == null) { showError("Password is required"); return; }
-                if(passwordConfirm.equals("") || passwordConfirm == null) { showError("Password confirm is required"); return; }
+                if (username.equals("") || username == null) {
+                    showError("Username is required.");
+                    return;
+                }
+                if (email.equals("") || email == null) {
+                    showError("Email is required");
+                    return;
+                }
+                if (password.equals("") || password == null) {
+                    showError("Password is required");
+                    return;
+                }
+                if (passwordConfirm.equals("") || passwordConfirm == null) {
+                    showError("Password confirm is required");
+                    return;
+                }
 
-                if(!password.toLowerCase().equals(passwordConfirm.toLowerCase())) { showError("Passwords don\'t match!"); return; }
+                if (!password.toLowerCase().equals(passwordConfirm.toLowerCase())) {
+                    showError("Passwords don\'t match!");
+                    return;
+                }
 
                 final String encryptedPassword = Encrypt.encryptString(password);
 
                 boolean registrationDidSucceed = false;
-                try{
+                try {
                     registrationDidSucceed = HttpRequest.Register(username, email, encryptedPassword);
-                } catch(IllegalArgumentException e) {
+                } catch (IllegalArgumentException e) {
                     showError(e.getMessage());
                 }
 
-                if(registrationDidSucceed) {
+                if (registrationDidSucceed) {
                     Intent intent = new Intent(DoSignup.this, DoLogin.class);
                     startActivity(intent);
                 }
 
+            }
+        });
+
+        Button menuButton = (Button) findViewById(R.id.btnMenu);
+
+        menuButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DoSignup.this, Menu.class);
+                intent.putExtra("activity", MainActivity.class);
+
+                startActivity(intent);
             }
         });
     }

@@ -33,6 +33,17 @@ public class Login extends AppCompatActivity {
             }
         });
 
+        Button menuButton = (Button) findViewById(R.id.btnMenu);
+
+        menuButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Login.this, Menu.class);
+                intent.putExtra("activity", MainActivity.class);
+
+                startActivity(intent);
+            }
+        });
 
     }
 }

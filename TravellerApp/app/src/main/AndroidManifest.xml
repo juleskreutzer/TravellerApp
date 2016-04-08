@@ -22,7 +22,7 @@
         </activity>
         <activity android:name=".Login" />
         <activity android:name=".DoLogin" />
-        <activity android:name=".doSignup" />
+        <activity android:name=".DoSignup" />
         <activity android:name=".Menu"></activity>
     </application>
 

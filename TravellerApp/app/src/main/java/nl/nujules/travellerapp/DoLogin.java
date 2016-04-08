@@ -31,16 +31,28 @@ public class DoLogin extends AppCompatActivity {
                 final String encryptedPassword = Encrypt.encryptString(password);
 
                 boolean loginDidSucceed = false;
-                try{
+                try {
                     loginDidSucceed = HttpRequest.Login(email, encryptedPassword);
-                } catch(IllegalArgumentException e) {
+                } catch (IllegalArgumentException e) {
                     showError(e.getMessage());
                 }
 
-                if(loginDidSucceed) {
+                if (loginDidSucceed) {
                     Intent intent = new Intent(DoLogin.this, MainActivity.class);
                     startActivity(intent);
                 }
+            }
+        });
+
+        Button menuButton = (Button) findViewById(R.id.btnMenu);
+
+        menuButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DoLogin.this, Menu.class);
+                intent.putExtra("activity", MainActivity.class);
+
+                startActivity(intent);
             }
         });
     }
