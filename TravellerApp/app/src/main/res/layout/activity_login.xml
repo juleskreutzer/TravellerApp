@@ -10,6 +10,10 @@
     tools:context="nl.nujules.travellerapp.Login"
     style="@style/Background">
 
+    <Button
+        style="@style/Menu.Open"
+        android:id="@+id/btnMenu"/>
+
 
     <RelativeLayout
         android:layout_width="match_parent"

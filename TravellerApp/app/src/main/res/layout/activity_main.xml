@@ -10,4 +10,7 @@
     tools:context="nl.nujules.travellerapp.MainActivity"
     style="@style/Background">
 
+    <Button
+        style="@style/Menu.Open"
+        android:id="@+id/btnMenu"/>
 </RelativeLayout>
