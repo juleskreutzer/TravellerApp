@@ -47,4 +47,37 @@
     <style name="Button.Login" parent="Button.Green">
         <item name="android:text">@string/btnLogin</item>
     </style>
+
+    <!-- Menu Button -->
+    <style name="Menu">
+        <item name="android:layout_width">30dp</item>
+        <item name="android:layout_height">30dp</item>
+        <item name="android:layout_alignParentTop">true</item>
+    </style>
+
+    <style name="MenuPerson">
+        <item name="android:layout_width">30dp</item>
+        <item name="android:layout_height">30dp</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:layout_alignParentEnd">true</item>
+        <item name="android:background">@drawable/person</item>
+    </style>
+
+    <style name="Menu.Open" parent="Menu">
+        <item name="android:background">@drawable/menu_icon</item>
+    </style>
+
+    <style name="Menu.Close" parent="Menu">
+        <item name="android:background">@drawable/menu_icon_close</item>
+    </style>
+
+    <style name="MenuButton">
+        <item name="android:textColor">@color/colorWhite</item>
+    </style>
+
+    <style name="MenuButton.Bold" parent="MenuButton">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
 </resources>
