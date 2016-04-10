@@ -7,6 +7,12 @@
     <string name="MenuAddKeyword">Add keyword</string>
     <string name="MenuAddReview">Add Review</string>
 
+    <!-- Nearby Items -->
+    <string name="NearbyRestaurant">Restaurant</string>
+    <string name="NearbyShop">Shop</string>
+    <string name="NearbyHotel">Hotel</string>
+    <string name="NearbyLeisure">Leisure</string>
+
     <!-- button strings -->
     <string name="btnRegister">Register</string>
     <string name="btnLogin">Login</string>

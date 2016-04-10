@@ -13,4 +13,11 @@
     <color name="colorButtonGreen">#80CF6B</color>
     <color name="colorButtonOrange">#FF6600</color>
     <color name="colorButtonRed">#C90002</color>
+
+    <!-- Nearby colors -->
+    <color name="darkOrange">#EEC492</color>
+    <color name="brown">#9B7667</color>
+    <color name="darkBrown">#5D4543</color>
+    <color name="turquoise">#B0CEB4</color>
+
 </resources>

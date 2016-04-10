@@ -24,7 +24,8 @@
         <activity android:name=".DoLogin" />
         <activity android:name=".DoSignup" />
         <activity android:name=".Menu" />
-        <activity android:name=".Placeholder"></activity>
+        <activity android:name=".Placeholder" />
+        <activity android:name=".Nearby"></activity>
     </application>
 
 </manifest>

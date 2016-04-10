@@ -10,4 +10,21 @@
                 <item name="android:layout_alignParentRight">true</item>
                 <item name="android:layout_alignParentEnd">true</item>
         </style>
+
+        <style name="MenuPerson">
+                <item name="android:layout_width">30dp</item>
+                <item name="android:layout_height">30dp</item>
+                <item name="android:layout_alignParentBottom">true</item>
+                <item name="android:layout_alignParentEnd">true</item>
+                <item name="android:background">@drawable/person</item>
+        </style>
+
+        <style name="NearbyButton">
+                <item name="android:layout_width">match_parent</item>
+                <item name="android:layout_height">75dp</item>
+                <item name="android:layout_alignParentLeft">true</item>
+                <item name="android:layout_alignParentStart">true</item>
+                <item name="android:layout_alignParentEnd">true</item>
+                <item name="android:layout_alignParentRight">true</item>
+        </style>
 </resources>
