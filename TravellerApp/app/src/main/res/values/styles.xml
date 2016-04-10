@@ -79,5 +79,45 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="NearbyButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">75dp</item>
+        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:layout_alignParentStart">true</item>
+        <item name="android:layout_alignParentEnd">true</item>
+        <item name="android:layout_alignParentRight">true</item>
+    </style>
+
+    <style name="NearbyButton.Restaurant" parent="NearbyButton">
+        <item name="android:src">@drawable/restaurant_button</item>
+        <item name="android:scaleType">fitXY</item>
+        <item name="android:background">@color/darkOrange</item>
+        <item name="android:drawablePadding">10dp</item>
+        <item name="android:contentDescription">@string/NearbyRestaurant</item>
+    </style>
+
+    <style name="NearbyButton.Shop" parent="NearbyButton">
+        <item name="android:src">@drawable/shop_button</item>
+        <item name="android:scaleType">fitXY</item>
+        <item name="android:background">@color/brown</item>
+        <item name="android:drawablePadding">10dp</item>
+        <item name="android:contentDescription">@string/NearbyShop</item>
+    </style>
+    
+    <style name="NearbyButton.Hotel" parent="NearbyButton">
+        <item name="android:src">@drawable/hotel_button</item>
+        <item name="android:scaleType">fitXY</item>
+        <item name="android:background">@color/turquoise</item>
+        <item name="android:drawablePadding">10dp</item>
+        <item name="android:contentDescription">@string/NearbyHotel</item>
+    </style>
+
+    <style name="NearbyButton.Leisure" parent="NearbyButton">
+        <item name="android:src">@drawable/leisure_button</item>
+        <item name="android:scaleType">fitXY</item>
+        <item name="android:background">@color/darkBrown</item>
+        <item name="android:drawablePadding">10dp</item>
+        <item name="android:contentDescription">@string/NearbyLeisure</item>
+    </style>
 
 </resources>

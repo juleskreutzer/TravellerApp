@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import nl.nujules.travellerapp.util.ActivityType;
+
 public class Login extends AppCompatActivity {
 
     @Override
@@ -39,7 +41,7 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Login.this, Menu.class);
-                intent.putExtra("activity", MainActivity.class);
+                intent.putExtra("activity", ActivityType.LOGIN);
 
                 startActivity(intent);
             }

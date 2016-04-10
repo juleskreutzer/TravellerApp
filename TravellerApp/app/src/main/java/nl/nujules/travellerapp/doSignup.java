@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
+import nl.nujules.travellerapp.util.ActivityType;
 import nl.nujules.travellerapp.util.Encrypt;
 
 public class DoSignup extends AppCompatActivity {
@@ -77,7 +78,7 @@ public class DoSignup extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DoSignup.this, Menu.class);
-                intent.putExtra("activity", MainActivity.class);
+                intent.putExtra("activity", ActivityType.DO_SIGNUP);
 
                 startActivity(intent);
             }

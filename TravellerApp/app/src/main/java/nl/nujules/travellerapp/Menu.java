@@ -1,5 +1,6 @@
 package nl.nujules.travellerapp;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,6 +9,8 @@ import android.widget.Button;
 
 import java.io.Serializable;
 
+import nl.nujules.travellerapp.util.ActivityType;
+
 public class Menu extends AppCompatActivity {
 
     @Override
@@ -15,7 +18,7 @@ public class Menu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
-        final Serializable activity = getIntent().getSerializableExtra("activity");
+        final ActivityType activity = (ActivityType) getIntent().getSerializableExtra("activity");
 
         Button closeButton = (Button) findViewById(R.id.btnMenuClose);
 
@@ -24,19 +27,22 @@ public class Menu extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent intent = null;
-                    switch(activity.getClass().getName())
+                    switch(activity)
                     {
-                        case "MainActivity":
+                        case MAIN_ACTIVITY:
                             intent = new Intent(Menu.this, MainActivity.class);
                             break;
-                        case "DoLogin":
+                        case DO_LOGIN:
                             intent = new Intent(Menu.this, DoLogin.class);
                             break;
-                        case "DoSignup":
+                        case DO_SIGNUP:
                             intent = new Intent(Menu.this, DoSignup.class);
                             break;
-                        case "Login":
+                        case LOGIN:
                             intent = new Intent(Menu.this, Login.class);
+                            break;
+                        case NEARBY:
+                            intent = new Intent(Menu.this, Nearby.class);
                             break;
                         default:
                             intent = new Intent(Menu.this, MainActivity.class);
@@ -95,7 +101,7 @@ public class Menu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //TODO: Change the intent so it will display the nearby activity
-                Intent intent = new Intent(Menu.this, MainActivity.class);
+                Intent intent = new Intent(Menu.this, Nearby.class);
                 startActivity(intent);
             }
         };
