@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import nl.nujules.travellerapp.util.ActivityType;
 
@@ -24,6 +25,43 @@ public class Nearby extends AppCompatActivity {
                 Intent intent = new Intent(Nearby.this, Menu.class);
                 intent.putExtra("activity", ActivityType.NEARBY);
 
+                startActivity(intent);
+            }
+        });
+
+        ImageButton restaurant = (ImageButton) findViewById(R.id.btnNearbyRestaurant);
+        ImageButton shop = (ImageButton) findViewById(R.id.btnNearbyShop);
+        ImageButton hotel = (ImageButton) findViewById(R.id.btnNearbyHotel);
+        ImageButton leisure = (ImageButton) findViewById(R.id.btnNearbyLeisure);
+
+        restaurant.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Nearby.this, NearbyResult.class);
+                startActivity(intent);
+            }
+        });
+
+        shop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Nearby.this, NearbyResult.class);
+                startActivity(intent);
+            }
+        });
+
+        hotel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Nearby.this, NearbyResult.class);
+                startActivity(intent);
+            }
+        });
+
+        leisure.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Nearby.this, NearbyResult.class);
                 startActivity(intent);
             }
         });
