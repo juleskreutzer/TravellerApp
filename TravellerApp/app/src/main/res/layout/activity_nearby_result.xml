@@ -17,6 +17,30 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        style="@style/trasparentBackground"></RelativeLayout>
+        style="@style/trasparentBackground">
+
+        <ImageButton
+            style="@style/NearbyResultButton.HotelDux.DarkOrange"
+            android:layout_marginTop="80dp"
+            android:id="@+id/btnHotelDux1" />
+
+        <ImageButton
+            style="@style/NearbyResultButton.HotelDux.Brown"
+            android:id="@+id/btnHotelDux2"
+            android:layout_below="@+id/btnHotelDux1"
+            android:layout_marginTop="30dp" />
+
+        <ImageButton
+            style="@style/NearbyResultButton.HotelDux.Turquoise"
+            android:id="@+id/btnHotelDux3"
+            android:layout_below="@id/btnHotelDux2"
+            android:layout_marginTop="30dp" />
+
+        <ImageButton
+            style="@style/NearbyResultButton.HotelDux.DarkBrown"
+            android:id="@+id/btnHotelDux4"
+            android:layout_below="@id/btnHotelDux3"
+            android:layout_marginTop="30dp" />
+    </RelativeLayout>
 
 </RelativeLayout>
