@@ -17,6 +17,7 @@
     <string name="btnRegister">Register</string>
     <string name="btnLogin">Login</string>
     <string name="btnLogout">Logout</string>
+    <string name="btnReview">Add Review</string>
 
     <!-- View Strings -->
     <string name="LoginViewInfo">Do you want to share something with the world?</string>
@@ -28,4 +29,17 @@
     <string name="txtPasswordHint">Password</string>
     <string name="txtPasswordComfirmHint">Confirm password</string>
     <string name="txtEmailHint">Email</string>
+
+    <string name="NearbyResultSpecificInfoName">Name</string>
+    <string name="NearbyResultSpecificInfoPhone">Phone number</string>
+    <string name="NearbyResultSpecificInfoAddress">Address</string>
+    <string name="NearbyResultSpecificInfoPostal">Postal code</string>
+    <string name="NearbyResultSpecificInfoCountry">Country</string>
+    <string name="NearbyResultSpecificInfoWebsite">Website</string>
+    <string name="NearbyResultSpecificName">Hotel DUX</string>
+    <string name="NearbyResultSpecificPhone">+31 (0)475 300 300</string>
+    <string name="NearbyResultSpecificAddress">Roerkade 11</string>
+    <string name="NearbyResultSpecificPostal">6041KZ</string>
+    <string name="NearbyResultSpecificCountry">The Netherlands</string>
+    <string name="NearbyResultSpecificWebsite">http://www.hoteldux.nl</string>
 </resources>

@@ -44,6 +44,8 @@ public class Menu extends AppCompatActivity {
                         case NEARBY:
                             intent = new Intent(Menu.this, Nearby.class);
                             break;
+                        case NEARBY_RESULT:
+                            intent = new Intent(Menu.this, NearbyResult.class);
                         default:
                             intent = new Intent(Menu.this, MainActivity.class);
                     }

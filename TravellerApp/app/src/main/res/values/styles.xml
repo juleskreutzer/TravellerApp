@@ -17,6 +17,11 @@
         <item name="android:background">@color/colorWhiteTrasparent</item>
     </style>
 
+    <style name="WhiteText">
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textSize">17dp</item>
+    </style>
+
     <style name="Button">
         <item name="android:layout_width">320dp</item>
         <item name="android:layout_height">wrap_content</item>
@@ -46,6 +51,19 @@
 
     <style name="Button.Login" parent="Button.Green">
         <item name="android:text">@string/btnLogin</item>
+    </style>
+
+    <style name="Button.Review">
+        <item name="android:text">@string/btnReview</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:layout_alignParentStart">true</item>
+        <item name="android:layout_alignParentEnd">true</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:background">@color/colorButtonGreen</item>
+        <item name="android:radius">10dp</item>
     </style>
 
     <!-- Menu Button -->
@@ -120,4 +138,48 @@
         <item name="android:contentDescription">@string/NearbyLeisure</item>
     </style>
 
+    <style name="NearbyResultButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">75dp</item>
+        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:layout_alignParentStart">true</item>
+        <item name="android:layout_alignParentEnd">true</item>
+        <item name="android:layout_alignParentRight">true</item>
+    </style>
+
+    <style name="NearbyResultButton.HotelDux" parent="NearbyResultButton">
+        <item name="android:src">@drawable/hotel_dux</item>
+        <item name="android:scaleType">fitXY</item>
+        <item name="android:drawablePadding">10dp</item>
+    </style>
+
+    <style name="NearbyResultButton.HotelDux.DarkOrange" parent="NearbyResultButton.HotelDux">
+        <item name="android:background">@color/darkOrange</item>
+    </style>
+
+    <style name="NearbyResultButton.HotelDux.Brown" parent="NearbyResultButton.HotelDux">
+        <item name="android:background">@color/brown</item>
+    </style>
+
+    <style name="NearbyResultButton.HotelDux.Turquoise" parent="NearbyResultButton.HotelDux">
+        <item name="android:background">@color/turquoise</item>
+    </style>
+
+    <style name="NearbyResultButton.HotelDux.DarkBrown" parent="NearbyResultButton.HotelDux">
+        <item name="android:background">@color/darkBrown</item>
+    </style>
+
+
+    <style name="SpecificItemImage">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:layout_alignParentStart">true</item>
+        <item name="android:layout_alignParentEnd">true</item>
+        <item name="android:layout_alignParentRight">true</item>
+    </style>
+
+    <style name="SpecificItemImage.DUX" parent="SpecificItemImage">
+        <item name="android:src">@drawable/hoteldux</item>
+    </style>
 </resources>

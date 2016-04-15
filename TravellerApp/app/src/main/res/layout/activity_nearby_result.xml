@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="nl.nujules.travellerapp.Nearby"
+    tools:context="nl.nujules.travellerapp.NearbyResult"
     style="@style/Background">
 
     <Button
@@ -20,26 +20,27 @@
         style="@style/trasparentBackground">
 
         <ImageButton
-            style="@style/NearbyButton.Restaurant"
+            style="@style/NearbyResultButton.HotelDux.DarkOrange"
             android:layout_marginTop="80dp"
-            android:id="@+id/btnNearbyRestaurant" />
+            android:id="@+id/btnHotelDux1" />
 
         <ImageButton
-            style="@style/NearbyButton.Shop"
-            android:id="@+id/btnNearbyShop"
-            android:layout_below="@+id/btnNearbyRestaurant"
+            style="@style/NearbyResultButton.HotelDux.Brown"
+            android:id="@+id/btnHotelDux2"
+            android:layout_below="@+id/btnHotelDux1"
             android:layout_marginTop="30dp" />
 
         <ImageButton
-            style="@style/NearbyButton.Hotel"
-            android:id="@+id/btnNearbyHotel"
-            android:layout_below="@id/btnNearbyShop"
+            style="@style/NearbyResultButton.HotelDux.Turquoise"
+            android:id="@+id/btnHotelDux3"
+            android:layout_below="@id/btnHotelDux2"
             android:layout_marginTop="30dp" />
 
         <ImageButton
-            style="@style/NearbyButton.Leisure"
-            android:id="@+id/btnNearbyLeisure"
-            android:layout_below="@id/btnNearbyHotel"
+            style="@style/NearbyResultButton.HotelDux.DarkBrown"
+            android:id="@+id/btnHotelDux4"
+            android:layout_below="@id/btnHotelDux3"
             android:layout_marginTop="30dp" />
     </RelativeLayout>
+
 </RelativeLayout>
