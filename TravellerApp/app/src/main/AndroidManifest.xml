@@ -27,7 +27,8 @@
         <activity android:name=".Placeholder" />
         <activity android:name=".Nearby" />
         <activity android:name=".NearbyResult" />
-        <activity android:name=".NearbyResultSpecific"></activity>
+        <activity android:name=".NearbyResultSpecific" />
+        <activity android:name=".AddReview"></activity>
     </application>
 
 </manifest>
