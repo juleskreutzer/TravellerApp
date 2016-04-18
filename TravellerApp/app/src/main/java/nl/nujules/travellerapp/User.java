@@ -12,7 +12,7 @@ public class User {
     private String lastName;
     private String country;
     private String proftilePictureUrl;
-    private String authToken;
+    private String authToken = "";
 
     private static User _instance;
 

@@ -27,7 +27,7 @@ public class HttpRequest {
      * @param password Password the user is registered with
      * @return true if login succesfull, false if not
      */
-    public static boolean Login(final String email, final String password) throws IllegalArgumentException {
+    public static void Login(final String email, final String password) throws IllegalArgumentException {
 
         if(email.equals(""))
             throw new IllegalArgumentException("Email needs to be provided!");
@@ -35,6 +35,7 @@ public class HttpRequest {
         if(password.equals(""))
             throw new IllegalArgumentException("Password needs to be provided!");
 
+        final boolean successful;
         Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -43,13 +44,21 @@ public class HttpRequest {
                     URL url = new URL(SERVER_ADDRESS + endpoint);
                     HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                     connection.setRequestMethod("POST");
+                    connection.connect();
 
-                    InputStream in = new BufferedInputStream(connection.getInputStream());
+                    int code = connection.getResponseCode();
 
-                    String token = new Scanner(in, "UTF-8").next();
+                    if(code == 200) {
 
-                    if(!token.equals("") || token != null) {
-                        User.getInstance().setAuthToken(token);
+                        InputStream in = new BufferedInputStream(connection.getInputStream());
+
+
+                        String token = new Scanner(in, "UTF-8").next();
+                        System.out.println("==============================================================" + token);
+
+                        if (!token.equals("") || token != null) {
+                            User.getInstance().setAuthToken(token);
+                        }
                     }
 
                 } catch (MalformedURLException e) {
@@ -58,14 +67,18 @@ public class HttpRequest {
                 } catch (IOException e) {
                     e.printStackTrace();
                     throw new IllegalArgumentException("At this time, we can't reach the server. Please try again later.");
+                } catch (IllegalArgumentException e) {
+                    throw new IllegalArgumentException(e.getMessage());
                 }
 
             }
         });
 
-        t.start();
-
-        return true;
+        try {
+            t.start();
+        } catch(IllegalArgumentException ex) {
+            throw new IllegalArgumentException(ex.getMessage());
+        }
 
     }
 

@@ -15,6 +15,14 @@ public class AddReview extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_review);
 
+        // Check if user is logged in
+        if(User.getInstance().getAuthToken().equals("") || User.getInstance().getAuthToken() == null) {
+            // User not logged in
+            Intent intent = new Intent(AddReview.this, DoLogin.class);
+            intent.putExtra("activity", ActivityType.ADD_REVIEW);
+            startActivity(intent);
+        }
+
         Button menuButton = (Button) findViewById(R.id.btnMenu);
 
         menuButton.setOnClickListener(new View.OnClickListener() {
@@ -23,7 +31,6 @@ public class AddReview extends AppCompatActivity {
                 //TODO: Replace "Placeholder.this" with the class name you implement this is.
                 Intent intent = new Intent(AddReview.this, Menu.class);
                 intent.putExtra("activity", ActivityType.ADD_REVIEW);
-
                 startActivity(intent);
             }
         });

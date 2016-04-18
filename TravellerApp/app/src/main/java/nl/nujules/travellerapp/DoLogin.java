@@ -1,5 +1,6 @@
 package nl.nujules.travellerapp;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -31,15 +32,36 @@ public class DoLogin extends AppCompatActivity {
 
                 final String encryptedPassword = Encrypt.encryptString(password);
 
+
                 boolean loginDidSucceed = false;
                 try {
-                    loginDidSucceed = HttpRequest.Login(email, encryptedPassword);
+                    HttpRequest.Login(email, encryptedPassword);
+                    if (User.getInstance().getAuthToken().equals("")) {
+                        showError("Email or password incorrect.");
+                    } else {
+                        loginDidSucceed = true;
+                    }
                 } catch (IllegalArgumentException e) {
                     showError(e.getMessage());
                 }
 
                 if (loginDidSucceed) {
-                    Intent intent = new Intent(DoLogin.this, MainActivity.class);
+                    // Check if this activity is opened from another activity that we want to return to
+                    ActivityType type = (ActivityType) getIntent().getSerializableExtra("activity");
+                    Intent intent = null;
+
+                    if (type == null) {
+                        intent = new Intent(DoLogin.this, MainActivity.class);
+                    } else {
+                        switch (type) {
+                            case ADD_REVIEW:
+                                intent = new Intent(DoLogin.this, AddReview.class);
+                                break;
+                            default:
+                                intent = new Intent(DoLogin.this, MainActivity.class);
+                        }
+                    }
+
                     startActivity(intent);
                 }
             }
