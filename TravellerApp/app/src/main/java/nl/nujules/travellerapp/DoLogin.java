@@ -43,15 +43,16 @@ public class DoLogin extends AppCompatActivity {
 
 
                 try {
-                    String[] params = new String[] {SERVER_ADDRESS, email, encryptedPassword};
+                    Object[] params = new Object[] {DoLogin.this, SERVER_ADDRESS, email, encryptedPassword};
 
 
-                    AsyncTask<String, Void, String> temp = new loginTask().execute(params);
+                    AsyncTask<Object, Void, String> temp = new loginTask().execute(params);
                     token = temp.get();
-                    if(token != null || !token.equals("")) {
+                    if(token != null) {
                         loginDidSucceed = true;
                     }
                 } catch(IllegalArgumentException e) {
+                    showError(e.getMessage());
 
                 } catch (InterruptedException | ExecutionException e) {
                     e.printStackTrace();
@@ -90,13 +91,22 @@ public class DoLogin extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        Button registerButton = (Button) findViewById(R.id.btnRegister);
+        registerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DoLogin.this, DoSignup.class);
+                startActivity(intent);
+            }
+        });
     }
 
     /**
      * Show a nice alert when something went wrong.
      * @param message The message that you want to show in the alert.
      */
-    private void showError(String message) {
+    public void showError(String message) {
         SweetAlertDialog dialog = new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE);
         dialog.setTitleText(message);
         dialog.setCancelable(true);

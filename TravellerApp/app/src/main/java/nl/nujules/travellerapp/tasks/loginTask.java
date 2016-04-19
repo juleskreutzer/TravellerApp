@@ -11,30 +11,37 @@ import java.net.ProtocolException;
 import java.net.URL;
 import java.util.Scanner;
 
+import nl.nujules.travellerapp.DoLogin;
+
 /**
  * Created by juleskreutzer on 19-04-16.
  * You're now reading the amazing copyright shizzle!
  */
-public class loginTask extends AsyncTask<String, Void, String> {
+public class loginTask extends AsyncTask<Object, Void, String> {
+
+    private Exception thrownException = null;
+    private DoLogin doLogin = null;
 
     /**
      * Login a use with an AsyncTask to take the load of the main thread
-     * @param params params use. We request 3 params: 1) URL (string), 2) email, 3) password (encrypted)
+     * @param params params use. We request 3 params: 1) Class instance 2) URL (string), 3) email, 4) password (encrypted)
      * @return authtoken if login is successful
      */
     @Override
-    protected String doInBackground(String... params) throws  IllegalArgumentException {
+    protected String doInBackground(Object... params) throws  IllegalArgumentException {
 
         int count = params.length;
-        if (count != 3) {
-            throw new IllegalArgumentException("Not enough or to much params provided!");
+        if (count != 4) {
+            thrownException = new IllegalArgumentException("Not enough or to much params provided!");
         }
         String authToken = null;
-        String urlString = params[0];
-        String email = params[1];
-        if (!email.contains("@")) { throw new IllegalArgumentException("Email incorrect"); }
 
-        String password = params[2];
+        doLogin = (DoLogin) params[0];
+        String urlString = (String) params[1];
+        String email = (String) params[2];
+        if (!email.contains("@")) { thrownException = new IllegalArgumentException("Email incorrect"); }
+
+        String password = (String) params[3];
 
         for (int i = 0; i < count; i++) {
             try {
@@ -52,10 +59,10 @@ public class loginTask extends AsyncTask<String, Void, String> {
                     authToken = new Scanner(in, "UTF-8").next();
                     System.out.println(String.format("Received authToken: %s", authToken));
                 } else if (code == 400) {
-                    throw new IllegalArgumentException("Email or password incorrect");
+                    thrownException = new IllegalArgumentException("Email or password incorrect");
                 }
                 else {
-                    throw new IllegalArgumentException(String.format("Something went wrong (response code %s)", code));
+                    thrownException = new IllegalArgumentException(String.format("Something went wrong (response code %s)", code));
                 }
 
             } catch (MalformedURLException e) {
@@ -69,6 +76,12 @@ public class loginTask extends AsyncTask<String, Void, String> {
         }
 
         return authToken;
+    }
 
+    @Override
+    public void onPostExecute(String result) {
+        if(thrownException != null) {
+            doLogin.showError(thrownException.getMessage());
+        }
     }
 }

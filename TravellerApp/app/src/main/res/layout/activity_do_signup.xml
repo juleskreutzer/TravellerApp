@@ -72,6 +72,16 @@
             android:layout_alignParentEnd="true" />
 
         <Button
+            style="@style/Button.Login"
+            android:text="@string/btnLogin"
+            android:id="@+id/btnLogin"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="78dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+        <Button
             style="@style/Button.Register"
             android:text="@string/btnRegister"
             android:id="@+id/btnRegister"
