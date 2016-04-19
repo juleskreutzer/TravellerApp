@@ -50,6 +50,8 @@ public class DoLogin extends AppCompatActivity {
                     token = temp.get();
                     if(token != null) {
                         loginDidSucceed = true;
+                        User.getInstance().setAuthToken(token);
+                        User.getInstance().setEmail(email);
                     }
                 } catch(IllegalArgumentException e) {
                     showError(e.getMessage());
