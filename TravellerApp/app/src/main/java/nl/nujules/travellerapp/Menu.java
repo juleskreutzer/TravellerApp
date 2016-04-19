@@ -137,7 +137,7 @@ public class Menu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //TODO: Change the intent so it will display the add review activity
-                Intent intent = new Intent(Menu.this, MainActivity.class);
+                Intent intent = new Intent(Menu.this, AddReview.class);
                 startActivity(intent);
             }
         };

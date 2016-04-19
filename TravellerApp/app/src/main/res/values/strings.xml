@@ -42,4 +42,5 @@
     <string name="NearbyResultSpecificPostal">6041KZ</string>
     <string name="NearbyResultSpecificCountry">The Netherlands</string>
     <string name="NearbyResultSpecificWebsite">http://www.hoteldux.nl</string>
+    <string name="AddReviewContentHint">What do you want to say about this place?</string>
 </resources>

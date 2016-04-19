@@ -4,7 +4,12 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
+
+import java.net.MalformedURLException;
 
 import nl.nujules.travellerapp.util.ActivityType;
 
@@ -28,11 +33,21 @@ public class AddReview extends AppCompatActivity {
         menuButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO: Replace "Placeholder.this" with the class name you implement this is.
                 Intent intent = new Intent(AddReview.this, Menu.class);
                 intent.putExtra("activity", ActivityType.ADD_REVIEW);
                 startActivity(intent);
             }
         });
+
+        Spinner keywordsSpinner = (Spinner) findViewById(R.id.addReviewKeywordsSpinnr);
+        ArrayAdapter<String> keywordsSpinnerAdapter = null;
+
+        try {
+            keywordsSpinnerAdapter = new ArrayAdapter<>(this, R.layout.keywords_item_text, Keywords.getInstance().getKeywords());
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+        keywordsSpinner.setAdapter(keywordsSpinnerAdapter);
     }
 }
