@@ -1,6 +1,7 @@
 package nl.nujules.travellerapp.tasks;
 
 import android.os.AsyncTask;
+import android.util.Base64;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -14,6 +15,7 @@ import java.net.URL;
 import java.util.Scanner;
 
 import nl.nujules.travellerapp.User;
+import nl.nujules.travellerapp.util.Base64Encoder;
 
 /**
  * Created by juleskreutzer on 19-04-16.
@@ -40,7 +42,7 @@ public class getProfileInfoTask extends AsyncTask<Object, Void, Void> {
         if(authToken.equals("")) { thrownException = new IllegalArgumentException("Please login to retrieve your information"); }
 
         try{
-            URL url = new URL(String.format("%s/user/find/email/%s", stringUrl, User.getInstance().getEmail()));
+            URL url = new URL(String.format("%s/user/find/email/%s", stringUrl, Base64Encoder.encode(User.getInstance().getEmail())));
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("POST");
             connection.setRequestProperty("Authorization", authToken);
