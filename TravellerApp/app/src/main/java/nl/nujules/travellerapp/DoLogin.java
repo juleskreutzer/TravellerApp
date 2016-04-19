@@ -2,17 +2,23 @@ package nl.nujules.travellerapp;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.util.concurrent.ExecutionException;
+
 import cn.pedant.SweetAlert.SweetAlertDialog;
+import nl.nujules.travellerapp.tasks.loginTask;
 import nl.nujules.travellerapp.util.ActivityType;
 import nl.nujules.travellerapp.util.Encrypt;
 
 public class DoLogin extends AppCompatActivity {
+
+    private static final String SERVER_ADDRESS = "http://185.107.212.20:8050";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,17 +38,23 @@ public class DoLogin extends AppCompatActivity {
 
                 final String encryptedPassword = Encrypt.encryptString(password);
 
-
+                String token = null;
                 boolean loginDidSucceed = false;
+
+
                 try {
-                    HttpRequest.Login(email, encryptedPassword);
-                    if (User.getInstance().getAuthToken().equals("")) {
-                        showError("Email or password incorrect.");
-                    } else {
+                    String[] params = new String[] {SERVER_ADDRESS, email, encryptedPassword};
+
+
+                    AsyncTask<String, Void, String> temp = new loginTask().execute(params);
+                    token = temp.get();
+                    if(token != null || !token.equals("")) {
                         loginDidSucceed = true;
                     }
-                } catch (IllegalArgumentException e) {
-                    showError(e.getMessage());
+                } catch(IllegalArgumentException e) {
+
+                } catch (InterruptedException | ExecutionException e) {
+                    e.printStackTrace();
                 }
 
                 if (loginDidSucceed) {
