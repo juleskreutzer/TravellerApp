@@ -1,12 +1,19 @@
 package nl.nujules.travellerapp;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.BufferedInputStream;
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
+import java.nio.charset.Charset;
 import java.util.Scanner;
 
 /**
@@ -27,7 +34,7 @@ public class HttpRequest {
      * @param password Password the user is registered with
      * @return true if login succesfull, false if not
      */
-    public static boolean Login(final String email, final String password) throws IllegalArgumentException {
+    public static void Login(final String email, final String password) throws IllegalArgumentException {
 
         if(email.equals(""))
             throw new IllegalArgumentException("Email needs to be provided!");
@@ -35,6 +42,7 @@ public class HttpRequest {
         if(password.equals(""))
             throw new IllegalArgumentException("Password needs to be provided!");
 
+        final boolean successful;
         Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -43,13 +51,21 @@ public class HttpRequest {
                     URL url = new URL(SERVER_ADDRESS + endpoint);
                     HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                     connection.setRequestMethod("POST");
+                    connection.connect();
 
-                    InputStream in = new BufferedInputStream(connection.getInputStream());
+                    int code = connection.getResponseCode();
 
-                    String token = new Scanner(in, "UTF-8").next();
+                    if(code == 200) {
 
-                    if(!token.equals("") || token != null) {
-                        User.getInstance().setAuthToken(token);
+                        InputStream in = new BufferedInputStream(connection.getInputStream());
+
+
+                        String token = new Scanner(in, "UTF-8").next();
+                        System.out.println("==============================================================" + token);
+
+                        if (!token.equals("") || token != null) {
+                            User.getInstance().setAuthToken(token);
+                        }
                     }
 
                 } catch (MalformedURLException e) {
@@ -58,14 +74,18 @@ public class HttpRequest {
                 } catch (IOException e) {
                     e.printStackTrace();
                     throw new IllegalArgumentException("At this time, we can't reach the server. Please try again later.");
+                } catch (IllegalArgumentException e) {
+                    throw new IllegalArgumentException(e.getMessage());
                 }
 
             }
         });
 
-        t.start();
-
-        return true;
+        try {
+            t.start();
+        } catch(IllegalArgumentException ex) {
+            throw new IllegalArgumentException(ex.getMessage());
+        }
 
     }
 
@@ -93,5 +113,33 @@ public class HttpRequest {
         t.start();
 
         return true;
+    }
+
+    private static String readAll(Reader rd) throws IOException {
+        StringBuilder sb = new StringBuilder();
+        int cp;
+        while ((cp = rd.read()) != -1) {
+            sb.append((char) cp);
+        }
+        return sb.toString();
+    }
+
+    public static JSONObject fetchKeywordsFromServer() throws IOException {
+        try {
+            URL url = new URL(SERVER_ADDRESS + "/search/keyword/all");
+            InputStream is = url.openStream();
+            try {
+                BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
+                String jsonText = readAll(rd);
+                JSONObject json = new JSONObject(jsonText);
+                return json;
+            } finally {
+                is.close();
+            }
+        } catch (MalformedURLException | JSONException e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 }
