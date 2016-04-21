@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="nl.nujules.travellerapp.Menu"
+    style="@style/Background">
+
+    <Button
+        style="@style/Menu.Close"
+        android:id="@+id/btnMenuClose"/>
+
+    <Button
+        style="@style/MenuButton.Bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/MenuSearchPlace"
+        android:id="@+id/btnSearch"
+        android:layout_marginTop="100dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:background="@color/colorTrasparent"
+        />
+    <Button
+        style="@style/MenuButton.Bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/MenuNearby"
+        android:id="@+id/btnNearby"
+        android:layout_marginTop="42dp"
+        android:layout_below="@id/btnSearch"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:background="@color/colorTrasparent"/>
+
+    <Button
+        style="@style/MenuButton.Bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/MenuAddKeyword"
+        android:id="@+id/btnAddKeyword"
+        android:layout_marginTop="42dp"
+        android:layout_below="@id/btnNearby"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:background="@color/colorTrasparent"/>
+
+    <Button
+        style="@style/MenuButton.Bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/MenuAddReview"
+        android:id="@+id/btnAddReview"
+        android:layout_marginTop="42dp"
+        android:layout_below="@id/btnAddKeyword"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:background="@color/colorTrasparent"/>
+
+    <Button
+        style="@style/MenuPerson"
+        android:id="@+id/btnProfile"
+        />
+
+    <Button
+        android:textColor="@color/colorWhite"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btnLogin"
+        android:id="@+id/btnMenuLogin"
+        android:background="@color/colorTrasparent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:textColor="@color/colorWhite"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btnRegister"
+        android:id="@+id/btnMenuRegister"
+        android:background="@color/colorTrasparent"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/btnMenuLogin"
+        android:layout_toEndOf="@+id/btnMenuLogin" />
+</RelativeLayout>

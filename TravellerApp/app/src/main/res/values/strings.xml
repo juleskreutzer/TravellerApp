@@ -1,4 +1,47 @@
 <resources>
     <string name="app_name">TravellerApp</string>
     <string name="title_activity_maps">Map</string>
+
+    <!-- Menu items -->
+    <string name="MenuSearchPlace">Search place</string>
+    <string name="MenuNearby">Nearby</string>
+    <string name="MenuAddKeyword">Add keyword</string>
+    <string name="MenuAddReview">Add Review</string>
+
+    <!-- Nearby Items -->
+    <string name="NearbyRestaurant">Restaurant</string>
+    <string name="NearbyShop">Shop</string>
+    <string name="NearbyHotel">Hotel</string>
+    <string name="NearbyLeisure">Leisure</string>
+
+    <!-- button strings -->
+    <string name="btnRegister">Register</string>
+    <string name="btnLogin">Login</string>
+    <string name="btnLogout">Logout</string>
+    <string name="btnReview">Add Review</string>
+
+    <!-- View Strings -->
+    <string name="LoginViewInfo">Do you want to share something with the world?</string>
+    <string name="PasswordString">Password</string>
+    <string name="EmailString">Email address</string>
+
+    <!-- Text View hints -->
+    <string name="txtUsernameHint">Username</string>
+    <string name="txtPasswordHint">Password</string>
+    <string name="txtPasswordComfirmHint">Confirm password</string>
+    <string name="txtEmailHint">Email</string>
+
+    <string name="NearbyResultSpecificInfoName">Name</string>
+    <string name="NearbyResultSpecificInfoPhone">Phone number</string>
+    <string name="NearbyResultSpecificInfoAddress">Address</string>
+    <string name="NearbyResultSpecificInfoPostal">Postal code</string>
+    <string name="NearbyResultSpecificInfoCountry">Country</string>
+    <string name="NearbyResultSpecificInfoWebsite">Website</string>
+    <string name="NearbyResultSpecificName">Hotel DUX</string>
+    <string name="NearbyResultSpecificPhone">+31 (0)475 300 300</string>
+    <string name="NearbyResultSpecificAddress">Roerkade 11</string>
+    <string name="NearbyResultSpecificPostal">6041KZ</string>
+    <string name="NearbyResultSpecificCountry">The Netherlands</string>
+    <string name="NearbyResultSpecificWebsite">http://www.hoteldux.nl</string>
+    <string name="AddReviewContentHint">What do you want to say about this place?</string>
 </resources>

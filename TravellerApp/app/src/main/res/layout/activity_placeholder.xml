@@ -13,4 +13,9 @@
     <Button
         style="@style/Menu.Open"
         android:id="@+id/btnMenu"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        style="@style/trasparentBackground"></RelativeLayout>
 </RelativeLayout>
