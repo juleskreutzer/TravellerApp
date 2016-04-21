@@ -21,9 +21,10 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/mapLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="0.35"
+        android:layout_weight="0.10"
         android:orientation="vertical">
 
 
@@ -38,18 +39,35 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/infoLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="0.7"
+        android:layout_weight="0.95"
         android:layout_marginTop="10dp"
         android:orientation="vertical"
         android:background="@color/transparantWhite" >
 
-        <ListView
+        <TextView
+            android:id="@+id/title"
+            android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/list">
-        </ListView>
+            android:textAlignment="center"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/snippet"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:textAlignment="center"/>
+
+
+        
+        <TextView
+            android:id="@+id/keywords"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"/>
+
+
     </LinearLayout>
 
 </LinearLayout>

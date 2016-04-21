@@ -12,15 +12,17 @@ public class Marker {
     String name;
     String snippet;
     double latitude;
-    double longtitude;
+    double longitude;
     Map<String, Integer> keywords;
     String[] reviews;
+
+
 
     public Marker(String name, String snippet, double lat, double lng, Map<String, Integer> keywords, String[] reviews) {
         this.name = name;
         this.snippet = snippet;
         this.latitude = lat;
-        this.longtitude = lng;
+        this.longitude = lng;
         this.keywords = keywords;
         this.reviews = reviews;
     }
@@ -32,6 +34,19 @@ public class Marker {
         dic.put("neat", 3);
         String[] reviews = new String[]{"very nice sleeping rooms, it looked very neat!", "The food they brought to my room was really good! 10/10 would visit again"};
         markers.add(new Marker("Hotel Rabobank", "Een mooi hotel wat gebouwd is in 1985 en het staat als een huis.", 51.444880, 5.477443 , dic, reviews));
+
+        dic = new HashMap<>();
+        dic.put("expensive", 2);
+        dic.put("neat", 1);
+        reviews = new String[]{"very nice sleeping rooms, it looked very neat!", "The food they brought to my room was really good! 10/10 would visit again"};
+        markers.add(new Marker("Hotel Rabobank", "Een mooi hotel wat gebouwd is in 1985 en het staat als een huis.", 51.744880, 5.277443 , dic, reviews));
+
+        dic = new HashMap<>();
+        dic.put("cheap", 2);
+        dic.put("dirty rooms", 6);
+        dic.put("bad food", 1);
+        reviews = new String[]{"very nice sleeping rooms, it looked very neat!", "The food they brought to my room was really good! 10/10 would visit again"};
+        markers.add(new Marker("Hotel Rabobank", "Een mooi hotel wat gebouwd is in 1985 en het staat als een huis.", 51.644880, 5.577443 , dic, reviews));
     }
 
 }

@@ -11,16 +11,32 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.text.Layout;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
+import com.google.android.gms.maps.CameraUpdate;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.Map;
+
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+    private boolean markerClicked = false;
+    private Marker clickedMarker = null;
+
+    private LinearLayout mapLayout;
+    private LinearLayout infoLayout;
+    private TextView infoLayoutMarkerName;
+    private TextView infoLayoutMarkerSnippet;
+    private TextView infoLayoutMarkerKeywords;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +46,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        mapLayout = (LinearLayout)findViewById(R.id.mapLayout);
+        infoLayout = (LinearLayout)findViewById(R.id.infoLayout);
+        infoLayoutMarkerName = (TextView)findViewById(R.id.title);
+        infoLayoutMarkerSnippet = (TextView)findViewById(R.id.snippet);
+        infoLayoutMarkerKeywords = (TextView)findViewById(R.id.keywords);
     }
 
 
@@ -48,7 +69,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         setUpMap();
         Marker.setUpMarkers();
         for (Marker marker : Marker.markers) {
-            addMarker(marker.name, marker.snippet, marker.latitude, marker.longtitude);
+            addMarker(marker.name, marker.snippet, marker.latitude, marker.longitude);
         }
     }
 
@@ -77,12 +98,54 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         Criteria criteria = new Criteria();
 
         // Get the name of the best provider
-        String provider = locationManager.getBestProvider(criteria, true);
+        String provider = locationManager.getBestProvider(criteria, false);
+
+
+
+        //Location l = locationManager.getLastKnownLocation(provider);
+        LatLng myCoordinates = new LatLng(51.4516028,5.4818477); // location of fontys R1
+        CameraUpdate yourLocation = CameraUpdateFactory.newLatLngZoom(myCoordinates, 12);
+        mMap.animateCamera(yourLocation);
     }
 
     private void addMarker(String title, String snippet, double lat, double lng) {
         LatLng latLng = new LatLng(lat, lng);
-        mMap.addMarker(new MarkerOptions().position(latLng).title(title).snippet(snippet));
+        com.google.android.gms.maps.model.Marker m = mMap.addMarker(new MarkerOptions().position(latLng).title(title).snippet(snippet));
+        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(com.google.android.gms.maps.model.Marker mapsMarker) {
+                forloop:
+                for (Marker m : Marker.markers) {
+                    if (mapsMarker.getPosition().latitude == m.latitude
+                            && mapsMarker.getPosition().longitude == m.longitude) {
+                        markerClicked(m);
+                        break forloop;
+                    }
+                }
+
+                return false;
+            }
+        });
+    }
+
+    private void markerClicked(Marker m){
+        markerClicked = true;
+        clickedMarker = m;
+        LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(
+                android.widget.LinearLayout.LayoutParams.MATCH_PARENT,
+                android.widget.LinearLayout.LayoutParams.MATCH_PARENT, 0.7f);
+        mapLayout.setLayoutParams(param);
+        param = new LinearLayout.LayoutParams(
+                android.widget.LinearLayout.LayoutParams.MATCH_PARENT,
+                android.widget.LinearLayout.LayoutParams.MATCH_PARENT, 0.35f);
+        infoLayout.setLayoutParams(param);
+        infoLayoutMarkerName.setText(m.name);
+        infoLayoutMarkerSnippet.setText("\n" + m.snippet);
+        String keywords = " \n Top Keywords:";
+        for (Map.Entry<String, Integer> e : m.keywords.entrySet()) {
+            keywords = keywords + "\n" + e.getKey() + ": " + e.getValue() + "x";
+        }
+        infoLayoutMarkerKeywords.setText(keywords);
     }
 
 
