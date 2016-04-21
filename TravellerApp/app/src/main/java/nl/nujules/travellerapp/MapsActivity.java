@@ -3,6 +3,7 @@ package nl.nujules.travellerapp;
 import android.Manifest;
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Criteria;
 import android.location.LocationManager;
@@ -12,6 +13,8 @@ import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.text.Layout;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -25,6 +28,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.Map;
+
+import nl.nujules.travellerapp.util.ActivityType;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -50,7 +55,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         infoLayout = (LinearLayout)findViewById(R.id.infoLayout);
         infoLayoutMarkerName = (TextView)findViewById(R.id.title);
         infoLayoutMarkerSnippet = (TextView)findViewById(R.id.snippet);
-        infoLayoutMarkerKeywords = (TextView)findViewById(R.id.keywords);
+        infoLayoutMarkerKeywords = (TextView)findViewById(R.id.keywords);Button menuButton = (Button) findViewById(R.id.btnMenu);
+
+        menuButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //TODO: Replace "Placeholder.this" with the class name you implement this is.
+                Intent intent = new Intent(MapsActivity.this, Menu.class);
+                intent.putExtra("activity", ActivityType.MAPS_ACTIVITY);
+
+                startActivity(intent);
+            }
+        });
     }
 
 
@@ -91,18 +107,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             mMap.setMyLocationEnabled(true);
         }
 
-        // Get LocationManager object from System Service LOCATION_SERVICE
+
         LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-
-        // Create a criteria object to retrieve provider
         Criteria criteria = new Criteria();
-
-        // Get the name of the best provider
         String provider = locationManager.getBestProvider(criteria, false);
 
 
 
-        //Location l = locationManager.getLastKnownLocation(provider);
+        //Location l = locationManager.getLastKnownLocation(provider); DOESNT WORK
         LatLng myCoordinates = new LatLng(51.4516028,5.4818477); // location of fontys R1
         CameraUpdate yourLocation = CameraUpdateFactory.newLatLngZoom(myCoordinates, 12);
         mMap.animateCamera(yourLocation);
@@ -139,6 +151,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 android.widget.LinearLayout.LayoutParams.MATCH_PARENT,
                 android.widget.LinearLayout.LayoutParams.MATCH_PARENT, 0.35f);
         infoLayout.setLayoutParams(param);
+
+        LatLng markerLatLng = new LatLng(m.latitude,m.longitude); // location of fontys R1
+        CameraUpdate markerLocation = CameraUpdateFactory.newLatLngZoom(markerLatLng, 12);
+        mMap.animateCamera(markerLocation);
+
         infoLayoutMarkerName.setText(m.name);
         infoLayoutMarkerSnippet.setText("\n" + m.snippet);
         String keywords = " \n Top Keywords:";

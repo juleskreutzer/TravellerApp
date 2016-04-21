@@ -9,15 +9,15 @@
     android:paddingBottom="10dp"
     style="@style/Background">
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="0.95"
         android:orientation="vertical">
-        <TextView
-            android:layout_height="match_parent"
-            android:layout_width="match_parent">
-        </TextView>
+        <Button
+            style="@style/Menu.Open"
+            android:id="@+id/btnMenu"/>
     </LinearLayout>
 
     <LinearLayout
@@ -60,7 +60,7 @@
             android:textAlignment="center"/>
 
 
-        
+
         <TextView
             android:id="@+id/keywords"
             android:layout_width="match_parent"

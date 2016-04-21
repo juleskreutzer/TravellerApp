@@ -50,6 +50,9 @@ public class Menu extends AppCompatActivity {
                         case ADD_REVIEW:
                             intent = new Intent(Menu.this, AddReview.class);
                             break;
+                        case MAPS_ACTIVITY:
+                            intent = new Intent(Menu.this, MapsActivity.class);
+                            break;
                         default:
                             intent = new Intent(Menu.this, MainActivity.class);
                     }
@@ -91,7 +94,7 @@ public class Menu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //TODO: Change the intent so it will display the search place activity
-                Intent intent = new Intent(Menu.this, MainActivity.class);
+                Intent intent = new Intent(Menu.this, MapsActivity.class);
                 startActivity(intent);
             }
         };
