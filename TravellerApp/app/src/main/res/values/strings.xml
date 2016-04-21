@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">TravellerApp</string>
+    <string name="title_activity_maps">Map</string>
 
     <!-- Menu items -->
     <string name="MenuSearchPlace">Search place</string>
