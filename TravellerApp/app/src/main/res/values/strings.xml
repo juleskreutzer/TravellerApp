@@ -31,6 +31,7 @@
     <string name="txtPasswordComfirmHint">Confirm password</string>
     <string name="txtEmailHint">Email</string>
 
+    <!-- NearbyResultSpecific text -->
     <string name="NearbyResultSpecificInfoName">Name</string>
     <string name="NearbyResultSpecificInfoPhone">Phone number</string>
     <string name="NearbyResultSpecificInfoAddress">Address</string>
@@ -44,4 +45,9 @@
     <string name="NearbyResultSpecificCountry">The Netherlands</string>
     <string name="NearbyResultSpecificWebsite">http://www.hoteldux.nl</string>
     <string name="AddReviewContentHint">What do you want to say about this place?</string>
+
+    <!-- Profile View text -->
+    <string name="ProfileName">Username</string>
+    <string name="profileEmail">Email</string>
+    <string name="profileBio">Bio</string>
 </resources>

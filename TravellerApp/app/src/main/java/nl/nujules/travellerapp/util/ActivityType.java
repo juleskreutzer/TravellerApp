@@ -7,5 +7,7 @@ import java.io.Serializable;
  */
 public enum ActivityType implements Serializable {
 
-    MAIN_ACTIVITY, DO_LOGIN, DO_SIGNUP, LOGIN, NEARBY, NEARBY_RESULT, ADD_REVIEW, MAPS_ACTIVITY
+
+    MAIN_ACTIVITY, DO_LOGIN, DO_SIGNUP, LOGIN, NEARBY, NEARBY_RESULT, ADD_REVIEW, MAPS_ACTIVITY, PROFILE
+
 }
