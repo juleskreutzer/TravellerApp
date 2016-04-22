@@ -52,6 +52,8 @@ public class Menu extends AppCompatActivity {
                             break;
                         case MAPS_ACTIVITY:
                             intent = new Intent(Menu.this, MapsActivity.class);
+                        case PROFILE:
+                            intent = new Intent(Menu.this, Profile.class);
                             break;
                         default:
                             intent = new Intent(Menu.this, MainActivity.class);
@@ -154,9 +156,17 @@ public class Menu extends AppCompatActivity {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                System.out.println(String.format("AuthToken: START%sEND", User.getInstance().getAuthToken()));
                 //TODO: Change the intent so it will display the profile activity. Perhaps also check if the user is logged in and if not show the login activity
-                Intent intent = new Intent(Menu.this, MainActivity.class);
-                startActivity(intent);
+                if(!User.getInstance().getAuthToken().equals("")) {
+                    Intent intent = new Intent(Menu.this, Profile.class);
+                    startActivity(intent);
+                } else {
+                    Intent intent = new Intent(Menu.this, DoLogin.class);
+                    intent.putExtra("activity", ActivityType.PROFILE);
+                    startActivity(intent);
+                }
             }
         };
     }

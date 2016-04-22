@@ -50,6 +50,8 @@ public class DoLogin extends AppCompatActivity {
                     token = temp.get();
                     if(token != null) {
                         loginDidSucceed = true;
+                        User.getInstance().setAuthToken(token);
+                        User.getInstance().setEmail(email);
                     }
                 } catch(IllegalArgumentException e) {
                     showError(e.getMessage());
@@ -69,6 +71,9 @@ public class DoLogin extends AppCompatActivity {
                         switch (type) {
                             case ADD_REVIEW:
                                 intent = new Intent(DoLogin.this, AddReview.class);
+                                break;
+                            case PROFILE:
+                                intent = new Intent(DoLogin.this, Profile.class);
                                 break;
                             default:
                                 intent = new Intent(DoLogin.this, MainActivity.class);

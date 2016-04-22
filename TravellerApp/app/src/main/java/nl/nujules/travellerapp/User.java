@@ -1,18 +1,21 @@
 package nl.nujules.travellerapp;
 
+import android.graphics.Bitmap;
+
 /**
  * Created by juleskreutzer on 04-04-16.
  */
 public class User {
 
-    private String username;
-    private String email;
-    private String bio;
-    private String firstName;
-    private String lastName;
-    private String country;
-    private String proftilePictureUrl;
+    private String username = "";
+    private String email = "";
+    private String bio = "";
+    private String firstName = "";
+    private String lastName = "";
+    private String country = "";
+    private String proftilePictureUrl = "";
     private String authToken = "";
+    private Bitmap imageBitmap = null;
 
     private static User _instance;
 
@@ -56,6 +59,8 @@ public class User {
 
     public String getAuthToken() { return authToken; }
 
+    public Bitmap getImageBitmap() { return imageBitmap; }
+
     // SETTERS
 
     public void setUsername(String username) {
@@ -87,6 +92,8 @@ public class User {
     }
 
     public void setAuthToken(String authToken) { this.authToken = authToken; }
+
+    public void setImageBitmap(Bitmap imageBitmap) { this.imageBitmap = imageBitmap; }
 
 
 }
