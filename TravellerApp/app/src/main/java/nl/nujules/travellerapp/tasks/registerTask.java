@@ -65,6 +65,7 @@ public class registerTask extends AsyncTask<Object, Void, Boolean> {
 
         } catch (IOException e) {
             e.printStackTrace();
+            thrownException = new IllegalArgumentException("Couldn't reach the server");
         }
 
         return false;
