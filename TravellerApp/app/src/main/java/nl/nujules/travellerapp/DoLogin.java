@@ -72,6 +72,9 @@ public class DoLogin extends AppCompatActivity {
                             case ADD_REVIEW:
                                 intent = new Intent(DoLogin.this, AddReview.class);
                                 break;
+                            case PROFILE:
+                                intent = new Intent(DoLogin.this, Profile.class);
+                                break;
                             default:
                                 intent = new Intent(DoLogin.this, MainActivity.class);
                         }

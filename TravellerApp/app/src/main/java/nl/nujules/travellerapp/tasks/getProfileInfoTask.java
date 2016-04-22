@@ -1,19 +1,28 @@
 package nl.nujules.travellerapp.tasks;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.util.Base64;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedInputStream;
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.Set;
 
+import nl.nujules.travellerapp.Profile;
 import nl.nujules.travellerapp.User;
 import nl.nujules.travellerapp.util.Base64Encoder;
 
@@ -21,9 +30,10 @@ import nl.nujules.travellerapp.util.Base64Encoder;
  * Created by juleskreutzer on 19-04-16.
  * You're now reading the amazing copyright shizzle!
  */
-public class getProfileInfoTask extends AsyncTask<Object, Void, Void> {
+public class getProfileInfoTask extends AsyncTask<Object, Void, Boolean> {
 
-    private Exception thrownException;
+    private Exception thrownException = null;
+    private Profile profile;
 
 
     /**
@@ -32,10 +42,11 @@ public class getProfileInfoTask extends AsyncTask<Object, Void, Void> {
      * @return
      */
     @Override
-    protected Void doInBackground(Object... params) {
+    protected Boolean doInBackground(Object... params) {
         int count = params.length;
         if(count != 2) { thrownException = new IllegalArgumentException("Not enough or too much params provided."); }
 
+        profile = (Profile) params[0];
         String stringUrl = (String) params[1];
 
         String authToken = User.getInstance().getAuthToken();
@@ -43,24 +54,71 @@ public class getProfileInfoTask extends AsyncTask<Object, Void, Void> {
 
         try{
             URL url = new URL(String.format("%s/user/find/email/%s", stringUrl, Base64Encoder.encode(User.getInstance().getEmail())));
+            System.out.println(url.toString());
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setRequestMethod("POST");
-            connection.setRequestProperty("Authorization", authToken);
-            connection.connect();
+            connection.setRequestMethod("GET");
 
             int code = connection.getResponseCode();
+
 
             if(code == 200) {
                 InputStream in = new BufferedInputStream(connection.getInputStream());
 
+                StringBuilder buffer = new StringBuilder();
 
-                String data = new Scanner(in, "UTF-8").next();
-                JSONObject json = new JSONObject(data);
+                BufferedReader reader = new BufferedReader(new InputStreamReader(in));
 
-                User.getInstance().setUsername(json.getString("username"));
-                User.getInstance().setBio(json.getString("bio"));
-                User.getInstance().setEmail(json.getString("email"));
-                User.getInstance().setProftilePictureUrl(json.getString("pictureUrl"));
+                String line = null;
+                try {
+                    while ((line = reader.readLine()) != null) {
+                        buffer.append(line);
+                    }
+
+                } finally {
+                    in.close();
+                    reader.close();
+                }
+
+                String data = buffer.toString();
+
+                JSONArray jsonArray = new JSONArray(data);
+
+                for(int i = 0; i < jsonArray.length(); i++) {
+                    JSONObject json = jsonArray.getJSONObject(i);
+
+                    User.getInstance().setUsername(json.getString("username"));
+                    User.getInstance().setBio(json.getString("bio"));
+                    User.getInstance().setEmail(json.getString("email"));
+                    User.getInstance().setProftilePictureUrl(json.getString("pictureUrl"));
+                }
+
+
+                if(!User.getInstance().getProftilePictureUrl().equals("")) {
+                    URL url2 = new URL(String.format("%s", User.getInstance().getProftilePictureUrl()));
+                    HttpURLConnection conn = (HttpURLConnection) url2.openConnection();
+                    conn.setRequestMethod("GET");
+                    conn.connect();
+
+                    InputStream input = new BufferedInputStream(conn.getInputStream());
+
+                    StringBuilder buf = new StringBuilder();
+
+                    BufferedReader rdr = new BufferedReader(new InputStreamReader(input));
+
+                    String l;
+                    try {
+                        while ((l = rdr.readLine()) != null) {
+                            buf.append(l);
+                        }
+                        Bitmap bitmap = BitmapFactory.decodeStream(input);
+                        User.getInstance().setImageBitmap(bitmap);
+                    } finally {
+                        input.close();
+                        rdr.close();
+                    }
+                }
+
+                return true;
 
             }
             else if(code == 400) {
@@ -77,6 +135,7 @@ public class getProfileInfoTask extends AsyncTask<Object, Void, Void> {
         } catch (IOException e) {
             e.printStackTrace();
         } catch (JSONException e) {
+            e.printStackTrace();
             thrownException = new IllegalArgumentException("Something went wrong with the data we got from the server. please try again");
         }
 
@@ -84,8 +143,12 @@ public class getProfileInfoTask extends AsyncTask<Object, Void, Void> {
     }
 
     @Override
-    protected void onPostExecute(Void aVoid) {
-        super.onPostExecute(aVoid);
+    protected void onPostExecute(Boolean result) {
+        super.onPostExecute(result);
+        if(thrownException != null) {
+            profile.showError(thrownException.getMessage());
+        }
+
     }
 }
 

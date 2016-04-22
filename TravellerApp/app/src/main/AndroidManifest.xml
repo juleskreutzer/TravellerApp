@@ -28,7 +28,8 @@
         <activity android:name=".Nearby" />
         <activity android:name=".NearbyResult" />
         <activity android:name=".NearbyResultSpecific" />
-        <activity android:name=".AddReview"></activity>
+        <activity android:name=".AddReview" />
+        <activity android:name=".Profile"></activity>
     </application>
 
 </manifest>
