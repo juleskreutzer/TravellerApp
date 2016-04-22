@@ -29,6 +29,8 @@
         <item name="android:textColor">@color/colorWhite</item>
     </style>
 
+
+
     <style name="Button.Red" parent="Button">
         <item name="android:background">@color/colorButtonRed</item>
     </style>
@@ -45,12 +47,20 @@
         <item name="android:text">@string/btnRegister</item>
     </style>
 
+    <style name = "Button.AddReview" parent="Button.Orange">
+        <item name="android:text">@string/MapAddReview</item>
+    </style>
+
     <style name="Button.Green" parent="Button">
         <item name="android:background">@color/colorButtonGreen</item>
     </style>
 
     <style name="Button.Login" parent="Button.Green">
         <item name="android:text">@string/btnLogin</item>
+    </style>
+
+    <style name = "Button.GetMoreInfo" parent="Button.Green">
+        <item name="android:text">@string/MapGetMoreInfo</item>
     </style>
 
     <style name="Button.Review">

@@ -3,6 +3,8 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="transparantWhite">#8FFFFFFF</color>
     <color name="colorWhite">#FFFFFF</color>
 
     <!-- Transparent white window color on view -->

@@ -27,6 +27,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/txtUsername"
             android:hint="@string/txtUsernameHint"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorWhite"
             android:layout_alignParentTop="true"
             android:layout_marginTop="76dp"
             android:layout_alignParentLeft="true"
@@ -38,17 +40,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/txtRegistrationEmail"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorWhite"
             android:hint="@string/txtEmailHint"
             android:layout_below="@+id/txtUsername"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_alignParentEnd="true"
+            android:inputType="textEmailAddress" />
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorWhite"
             android:ems="10"
             android:id="@+id/txtRegistrationPassword"
             android:hint="@string/txtPasswordHint"
@@ -64,6 +71,8 @@
             android:inputType="textPassword"
             android:ems="10"
             android:id="@+id/txtRegistrationPasswordConfirm"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorWhite"
             android:hint="@string/txtPasswordComfirmHint"
             android:layout_below="@+id/txtRegistrationPassword"
             android:layout_alignParentLeft="true"
@@ -72,17 +81,17 @@
             android:layout_alignParentEnd="true" />
 
         <Button
-            style="@style/Button.Login"
+            style="@style/Button.Register"
             android:text="@string/btnLogin"
             android:id="@+id/btnLogin"
-            android:layout_alignParentBottom="true"
+            android:layout_above="@+id/btnRegister"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_marginBottom="78dp"
+            android:layout_marginBottom="10dp"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />
         <Button
-            style="@style/Button.Register"
+            style="@style/Button.Login"
             android:text="@string/btnRegister"
             android:id="@+id/btnRegister"
             android:layout_alignParentBottom="true"
