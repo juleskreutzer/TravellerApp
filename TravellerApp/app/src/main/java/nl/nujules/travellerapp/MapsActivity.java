@@ -42,6 +42,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private TextView infoLayoutMarkerName;
     private TextView infoLayoutMarkerSnippet;
     private TextView infoLayoutMarkerKeywords;
+    private Button btnMoreInfo;
+    private Button btnAddReview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +58,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         infoLayoutMarkerName = (TextView)findViewById(R.id.title);
         infoLayoutMarkerSnippet = (TextView)findViewById(R.id.snippet);
         infoLayoutMarkerKeywords = (TextView)findViewById(R.id.keywords);Button menuButton = (Button) findViewById(R.id.btnMenu);
+        btnMoreInfo = (Button)findViewById(R.id.btnMoreInfo);
+        btnAddReview = (Button)findViewById(R.id.btnAddReview);
+
 
         menuButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,6 +69,22 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 Intent intent = new Intent(MapsActivity.this, Menu.class);
                 intent.putExtra("activity", ActivityType.MAPS_ACTIVITY);
 
+                startActivity(intent);
+            }
+        });
+
+        btnMoreInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MapsActivity.this, NearbyResultSpecific.class);
+                startActivity(intent);
+            }
+        });
+
+        btnAddReview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MapsActivity.this, AddReview.class);
                 startActivity(intent);
             }
         });
@@ -122,7 +143,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private void addMarker(String title, String snippet, double lat, double lng) {
         LatLng latLng = new LatLng(lat, lng);
-        com.google.android.gms.maps.model.Marker m = mMap.addMarker(new MarkerOptions().position(latLng).title(title).snippet(snippet));
+        com.google.android.gms.maps.model.Marker m = mMap.addMarker(new MarkerOptions().position(latLng).title(title));
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(com.google.android.gms.maps.model.Marker mapsMarker) {
@@ -152,7 +173,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 android.widget.LinearLayout.LayoutParams.MATCH_PARENT, 0.35f);
         infoLayout.setLayoutParams(param);
 
-        LatLng markerLatLng = new LatLng(m.latitude,m.longitude); // location of fontys R1
+        LatLng markerLatLng = new LatLng(m.latitude,m.longitude);
         CameraUpdate markerLocation = CameraUpdateFactory.newLatLngZoom(markerLatLng, 12);
         mMap.animateCamera(markerLocation);
 
@@ -163,6 +184,20 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             keywords = keywords + "\n" + e.getKey() + ": " + e.getValue() + "x";
         }
         infoLayoutMarkerKeywords.setText(keywords);
+    }
+
+    @Override
+    public void onBackPressed() {
+        markerClicked = false;
+        clickedMarker = null;
+        LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(
+                android.widget.LinearLayout.LayoutParams.MATCH_PARENT,
+                android.widget.LinearLayout.LayoutParams.MATCH_PARENT, 0.1f);
+        mapLayout.setLayoutParams(param);
+        param = new LinearLayout.LayoutParams(
+                android.widget.LinearLayout.LayoutParams.MATCH_PARENT,
+                android.widget.LinearLayout.LayoutParams.MATCH_PARENT, 0.95f);
+        infoLayout.setLayoutParams(param);
     }
 
 

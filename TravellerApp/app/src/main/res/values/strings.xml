@@ -2,6 +2,11 @@
     <string name="app_name">TravellerApp</string>
     <string name="title_activity_maps">Map</string>
 
+    <!-- Map Activity Strings -->
+    <string name="MapAddReview">Add Review</string>
+    <string name="MapGetMoreInfo">More Info</string>
+
+
     <!-- Menu items -->
     <string name="MenuSearchPlace">Search place</string>
     <string name="MenuNearby">Nearby</string>

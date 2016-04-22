@@ -39,14 +39,14 @@ public class Marker {
         dic.put("expensive", 2);
         dic.put("neat", 1);
         reviews = new String[]{"very nice sleeping rooms, it looked very neat!", "The food they brought to my room was really good! 10/10 would visit again"};
-        markers.add(new Marker("Hotel Rabobank", "Een mooi hotel wat gebouwd is in 1985 en het staat als een huis.", 51.744880, 5.277443 , dic, reviews));
+        markers.add(new Marker("Media Markt", "Een ideale winkel om uren lang bezig te zijn", 51.4426456, 5.4735338 , dic, reviews));
 
         dic = new HashMap<>();
         dic.put("cheap", 2);
         dic.put("dirty rooms", 6);
         dic.put("bad food", 1);
         reviews = new String[]{"very nice sleeping rooms, it looked very neat!", "The food they brought to my room was really good! 10/10 would visit again"};
-        markers.add(new Marker("Hotel Rabobank", "Een mooi hotel wat gebouwd is in 1985 en het staat als een huis.", 51.644880, 5.577443 , dic, reviews));
+        markers.add(new Marker("Hotel Stadshuis", "Een leuk hotel midden in het centrum, ideaal om midden in de stad te overnachten", 51.4359472, 5.4797984, dic, reviews));
     }
 
 }

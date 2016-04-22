@@ -45,7 +45,7 @@
         android:layout_weight="0.95"
         android:layout_marginTop="10dp"
         android:orientation="vertical"
-        android:background="@color/transparantWhite" >
+        android:background="@color/colorWhiteTrasparent" >
 
         <TextView
             android:id="@+id/title"
@@ -66,6 +66,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"/>
+
+        <Button
+            style="@style/Button.AddReview"
+            android:id="@+id/btnAddReview"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="100dp"/>
+
+        <Button
+            style="@style/Button.GetMoreInfo"
+            android:id="@+id/btnMoreInfo"
+            android:layout_marginBottom="10dp"/>
 
 
     </LinearLayout>
