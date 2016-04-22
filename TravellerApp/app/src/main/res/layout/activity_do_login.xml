@@ -26,6 +26,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/txtEmail"
             android:hint="@string/EmailString"
+            android:textColorHint="@color/colorWhite"
+            android:textColor="@color/colorWhite"
             android:layout_alignParentTop="true"
             android:layout_marginTop="109dp"
             android:layout_alignParentLeft="true"
@@ -39,6 +41,8 @@
             android:layout_height="wrap_content"
             android:inputType="textPassword"
             android:hint="@string/PasswordString"
+            android:textColorHint="@color/colorWhite"
+            android:textColor="@color/colorWhite"
             android:ems="10"
             android:id="@+id/txtPassword"
             android:layout_below="@+id/txtEmail"
@@ -51,8 +55,7 @@
             style="@style/Button.Register"
             android:text="@string/btnRegister"
             android:id="@+id/btnRegister"
-            android:layout_marginBottom="43dp"
-            android:layout_above="@+id/btnLogin"
+            android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentRight="true"
@@ -61,10 +64,12 @@
         <Button
             android:id="@+id/btnLogin"
             style="@style/Button.Login"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
+            android:layout_above="@+id/btnRegister"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="10dp"
+            android:layout_centerHorizontal="true" />
     </RelativeLayout>
 </RelativeLayout>

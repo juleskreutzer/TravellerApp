@@ -76,7 +76,7 @@ public class DoLogin extends AppCompatActivity {
                                 intent = new Intent(DoLogin.this, Profile.class);
                                 break;
                             default:
-                                intent = new Intent(DoLogin.this, MainActivity.class);
+                                intent = new Intent(DoLogin.this, MapsActivity.class);
                         }
                     }
 
